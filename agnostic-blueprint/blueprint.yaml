@@ -4,8 +4,8 @@ resources:
   Cloud_Machine_1:
     type: Cloud.Machine
     properties:
-      image: Ubuntu # you can set your own Image type on the Infrastructure tab, pay attention to this
-      flavor: Small # you can set your own definition of flavor on the infrastructure tab, pay attention to this too
+      image: Team-11 # you can set your own Image type on the Infrastructure tab, pay attention to this
+      flavor: Team-11-Small # you can set your own definition of flavor on the infrastructure tab, pay attention to this too
       networks:
         - name: '${resource.Cloud_Network_1.name}' 
   Cloud_Network_1:
