@@ -1,5 +1,6 @@
 name: team-11 # change the blueprint name to your team's name
 version: 1 # this version number should increase as you change your blueprint code
+inputs: {}
 resources:
   Cloud_Machine_1:
     type: Cloud.Machine
@@ -7,7 +8,26 @@ resources:
       image: Team-11 # you can set your own Image type on the Infrastructure tab, pay attention to this
       flavor: Team-11-Small # you can set your own definition of flavor on the infrastructure tab, pay attention to this too
       networks:
-        - name: '${resource.Cloud_Network_1.name}' 
+        - name: '${resource.Cloud_Network_1.name}'
+      tags:
+        - key: team
+          value: team-11
+      cloudConfig:
+        #cloud-config
+        repo_update: true
+        repo_upgrade: all
+
+        packages:
+         - apache2
+         - mysql-server
+         - php-mysql
+
+        runcmd:
+         - "echo '<?php phpinfo();' > /var/www/index.php"
+         - "rm /var/www/index.html"
+         - "sudo bash -c \"$(curl -sL https://wavefront.com/install)\" -- install --proxy --wavefront-url https://vmware.wavefront.com --api-token a1dc76ba-4435-4601-9b9c-091ba9a31a89"
+        #cloud-config
+
   Cloud_Network_1:
     type: Cloud.Network
     properties:
