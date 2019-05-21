@@ -1,4 +1,4 @@
-name: Agnostic-Blueprint # change the blueprint name to your team's name
+name: team-11 # change the blueprint name to your team's name
 version: 1 # this version number should increase as you change your blueprint code
 resources:
   Cloud_Machine_1:
